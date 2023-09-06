@@ -10,6 +10,7 @@ class AuthMerchantCabLocators:
     LOG_OUT_FIELD = (By.XPATH, '//*[@id="__next"]/div/div/main/header/div/div/div/div')
     LOG_OUT_BUTTON = (By.XPATH, '//*[@id="__next"]/div/div/main/header/div/div/div/div[2]')
 
+
 class MerchantCabCryptoAcquiringLocators:
     EMAIL_AUTH = (By.CSS_SELECTOR, 'input[type="email"]')
     PASSWORD_AUTH = (By.CSS_SELECTOR, 'input[type="password"]')
@@ -24,3 +25,6 @@ class MerchantCabCryptoAcquiringLocators:
     CURRENCY_TEXT = (By.XPATH, '/html/body/div[3]/div/div/div/div[4]')
     CURRENCY_DELETE_BUTTON = (By.XPATH, '//*[@id="__next"]/div/div/main/div/div[2]/div/div/div[1]/div['
                                         '6]/section/div/span/button')
+    CUSTOMERS_ID_BUTTON = (By.XPATH, '//*[@id="__next"]/div/div/main/div/div[2]/table/tbody/tr/td[1]')
+    CUSTOMERS_ID = (By.XPATH, '//*[@id="__next"]/div/div/main/div/div[2]/table/tbody/tr/td[1]/a')
+    CUSTOMERS_ID_RESULT = (By.XPATH, '/html/body/div[4]/div/div/h2/span')

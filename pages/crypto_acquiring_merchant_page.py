@@ -40,5 +40,11 @@ class MerchantCabCryptoAcquiring(BasePage):
         self.element_is_visible(self.locators.CURRENCY_DELETE_BUTTON).click()
         return currency, currency_result
 
+    def customers_id_check(self):
+        customers_id = self.element_is_visible(self.locators.CUSTOMERS_ID_BUTTON).text
+        self.element_is_visible(self.locators.CUSTOMERS_ID_BUTTON).click()
+        customers_id_result = self.element_is_visible(self.locators.CUSTOMERS_ID).text
+        return customers_id, customers_id_result
+
 
 
