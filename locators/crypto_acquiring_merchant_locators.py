@@ -34,6 +34,8 @@ class MerchantCabCryptoAcquiringLocators:
                                         '7]/button/span[1]')
     ORDER_ID_RESULT = (By.XPATH, '/html/body/div[4]/div/div/div[2]/div[2]')
     GENERATE_INVOICE_BUTTON = (By.XPATH, '//*[@id="__next"]/div/div/main/div/div[2]/button/span[1]/div[2]')
+    INVOICE_ORDER_ID = (By.XPATH, '/html/body/div[4]/div/div/div[2]/div[1]/input')
+    PAY_FORM_ORDER_ID = (By.XPATH, '//*[@id="__next"]/div/div[2]/div/div[1]/div[1]')
     INVOICE_AMOUNT_FIELD = (By.XPATH, '/html/body/div[4]/div/div/div[3]/div[1]/input')
     INVOICE_CURRENCY_BUTTON = (By.XPATH, '/html/body/div[4]/div/div/div[3]/div[2]/div/div/div')
     INVOICE_CURRENCY_FIELD = (By.XPATH, '//*[@id="react-select-2-input"]')

@@ -39,7 +39,8 @@ class TestMerchant:
             test_crypto_acquiring = MerchantCabCryptoAcquiring(driver, 'https://int.nimera.io/merchants/login/')
             test_crypto_acquiring.open()
             test_crypto_acquiring.auth_merchant_cab()
-            test_crypto_acquiring.generate_invoice()
+            invoice_order_id, pay_form_order_id = test_crypto_acquiring.generate_invoice()
+            assert invoice_order_id == pay_form_order_id, 'Generate invoice has not been correct work'
 
 
 

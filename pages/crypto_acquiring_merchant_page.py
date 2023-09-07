@@ -7,6 +7,8 @@ import pyperclip
 from selenium.webdriver import Keys
 from selenium.common import TimeoutException
 from selenium.webdriver.chrome import webdriver
+from selenium.webdriver.remote import switch_to
+from webdriver_manager.core import driver
 
 from locators.crypto_acquiring_merchant_locators import AuthMerchantCabLocators, MerchantCabCryptoAcquiringLocators
 from pages.base_page import BasePage
@@ -57,8 +59,11 @@ class MerchantCabCryptoAcquiring(BasePage):
         return order_id, order_id_result
 
     def generate_invoice(self):
+        driver = self.driver
+        window_before = driver.window_handles[0]
         self.element_is_visible(self.locators.INVOICES_BUTTON).click()
         self.element_is_visible(self.locators.GENERATE_INVOICE_BUTTON).click()
+        invoice_order_id = self.element_is_visible(self.locators.INVOICE_ORDER_ID).get_attribute('value')
         self.element_is_visible(self.locators.INVOICE_AMOUNT_FIELD).send_keys('0.0001')
         self.element_is_visible(self.locators.INVOICE_CURRENCY_BUTTON).click()
         self.element_is_present(self.locators.INVOICE_CURRENCY_FIELD).send_keys('BTC')
@@ -68,7 +73,10 @@ class MerchantCabCryptoAcquiring(BasePage):
         keyboard.send('Ctrl+t')
         keyboard.send('Ctrl+v')
         keyboard.send('enter')
-        time.sleep(2)
+        window_after = driver.window_handles[1]
+        driver.switch_to.window(window_after)
+        pay_form_order_id = self.element_is_present(self.locators.PAY_FORM_ORDER_ID).text.split('№')[1].split('\n')[0]
+        return invoice_order_id, pay_form_order_id
 
 
 
