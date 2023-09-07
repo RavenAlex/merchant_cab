@@ -28,4 +28,18 @@ class TestMerchant:
             customers_id, customers_id_result = test_crypto_acquiring.customers_id_check()
             assert customers_id == customers_id_result, 'Customers ID not correct'
 
+        def test_invoices_order_id(self, driver):
+            test_crypto_acquiring = MerchantCabCryptoAcquiring(driver, 'https://int.nimera.io/merchants/login/')
+            test_crypto_acquiring.open()
+            test_crypto_acquiring.auth_merchant_cab()
+            order_id, order_id_result = test_crypto_acquiring.invoices_order_id()
+            assert order_id == order_id_result, 'Invoices details has not been correct work'
+
+        def test_generate_invoice(self, driver):
+            test_crypto_acquiring = MerchantCabCryptoAcquiring(driver, 'https://int.nimera.io/merchants/login/')
+            test_crypto_acquiring.open()
+            test_crypto_acquiring.auth_merchant_cab()
+            test_crypto_acquiring.generate_invoice()
+
+
 

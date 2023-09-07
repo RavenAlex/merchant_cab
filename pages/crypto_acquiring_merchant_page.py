@@ -2,9 +2,11 @@ import random
 import time
 
 import keyboard
+import pyperclip
 
 from selenium.webdriver import Keys
 from selenium.common import TimeoutException
+from selenium.webdriver.chrome import webdriver
 
 from locators.crypto_acquiring_merchant_locators import AuthMerchantCabLocators, MerchantCabCryptoAcquiringLocators
 from pages.base_page import BasePage
@@ -45,6 +47,31 @@ class MerchantCabCryptoAcquiring(BasePage):
         self.element_is_visible(self.locators.CUSTOMERS_ID_BUTTON).click()
         customers_id_result = self.element_is_visible(self.locators.CUSTOMERS_ID).text
         return customers_id, customers_id_result
+
+    def invoices_order_id(self):
+        self.element_is_visible(self.locators.INVOICES_BUTTON).click()
+        order_id = self.element_is_visible(self.locators.ORDER_ID).text
+        self.element_is_visible(self.locators.INVOICE_DETAILS_BUTTON).click()
+        order_id_result = self.element_is_visible(self.locators.ORDER_ID_RESULT).text
+        time.sleep(1)
+        return order_id, order_id_result
+
+    def generate_invoice(self):
+        self.element_is_visible(self.locators.INVOICES_BUTTON).click()
+        self.element_is_visible(self.locators.GENERATE_INVOICE_BUTTON).click()
+        self.element_is_visible(self.locators.INVOICE_AMOUNT_FIELD).send_keys('0.0001')
+        self.element_is_visible(self.locators.INVOICE_CURRENCY_BUTTON).click()
+        self.element_is_present(self.locators.INVOICE_CURRENCY_FIELD).send_keys('BTC')
+        keyboard.send('enter')
+        self.element_is_visible(self.locators.GET_INVOICE_URL_BUTTON).click()
+        self.element_is_visible(self.locators.COPY_INVOICE_URL_BUTTON).click()
+        keyboard.send('Ctrl+t')
+        keyboard.send('Ctrl+v')
+        keyboard.send('enter')
+        time.sleep(2)
+
+
+
 
 
 
