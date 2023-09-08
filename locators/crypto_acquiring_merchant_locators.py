@@ -41,3 +41,19 @@ class MerchantCabCryptoAcquiringLocators:
     INVOICE_CURRENCY_FIELD = (By.XPATH, '//*[@id="react-select-2-input"]')
     GET_INVOICE_URL_BUTTON = (By.XPATH, '/html/body/div[4]/div/div/div[4]/button[1]')
     COPY_INVOICE_URL_BUTTON = (By.XPATH, '/html/body/div[4]/div/div/div[5]/div[2]/div[2]')
+    PAYOUTS_BUTTON = (By.CSS_SELECTOR, 'a[href="/merchants/crypto-acquiring/payouts/"]')
+    DATE_AND_TIME_OF_PAYOUT = (By.XPATH, '//*[@id="__next"]/div/div/main/div/div[2]/table/tbody/tr[1]/td[1]/div')
+    PAYOUT_DETAILS_BUTTON = (By.XPATH, '//*[@id="__next"]/div/div/main/div/div[2]/table/tbody/tr[1]/td[3]')
+    DATE_AND_TIME_OF_PAYOUT_DETAILS = (By.XPATH, '/html/body/div[4]/div/div/div[2]/div[1]/div[4]')
+    TRANSPORT_SET_BUTTON = (By.XPATH, '//*[@id="__next"]/div/div[2]/div/div[5]/div')
+    TRANSPORT_NEXT_BUTTON = (By.XPATH, '//*[@id="__next"]/div/div[2]/div/div[6]/button')
+    EMAIL_FIELD = (By.CSS_SELECTOR, 'input[name="email"]')
+    EMAIL_NEXT_BUTTON = (By.CSS_SELECTOR, 'button[class="Button_root__BkQ0y  "]')
+    PAY_BUTTON = (By.CSS_SELECTOR, 'button[class="Button_root__BkQ0y  "]')
+    CONFIRM_PAY_BUTTON = (By.CSS_SELECTOR, 'a[style="color: green"]')
+    REJECT_PAY_BUTTON = (By.CSS_SELECTOR, 'a[style="color: darkred"]')
+    STATE_BEFORE_PAY = (By.XPATH, '//*[@id="__next"]/div/div[2]/div/div[3]/div/div/div[2]/div/div[2]')
+    STATE_AFTER_PAY = (By.XPATH, '//*[@id="__next"]/div/div[2]/div/div[3]/div/div[1]/div/div/div[2]')
+
+
+

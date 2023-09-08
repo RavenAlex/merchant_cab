@@ -78,6 +78,42 @@ class MerchantCabCryptoAcquiring(BasePage):
         pay_form_order_id = self.element_is_present(self.locators.PAY_FORM_ORDER_ID).text.split('№')[1].split('\n')[0]
         return invoice_order_id, pay_form_order_id
 
+    def payout_details(self):
+        self.element_is_visible(self.locators.PAYOUTS_BUTTON).click()
+        date_and_time_of_payout = self.element_is_visible(self.locators.DATE_AND_TIME_OF_PAYOUT).text
+        self.element_is_visible(self.locators.PAYOUT_DETAILS_BUTTON).click()
+        date_and_time_of_payout_details = self.element_is_visible(self.locators.DATE_AND_TIME_OF_PAYOUT_DETAILS).text
+        return date_and_time_of_payout, date_and_time_of_payout_details
+
+    def invoice_payment(self):
+        driver = self.driver
+        window_before = driver.window_handles[0]
+        self.element_is_visible(self.locators.INVOICES_BUTTON).click()
+        self.element_is_visible(self.locators.GENERATE_INVOICE_BUTTON).click()
+        self.element_is_visible(self.locators.INVOICE_ORDER_ID).get_attribute('value')
+        self.element_is_visible(self.locators.INVOICE_AMOUNT_FIELD).send_keys('0.0001')
+        self.element_is_visible(self.locators.INVOICE_CURRENCY_BUTTON).click()
+        self.element_is_present(self.locators.INVOICE_CURRENCY_FIELD).send_keys('BTC')
+        keyboard.send('enter')
+        self.element_is_visible(self.locators.GET_INVOICE_URL_BUTTON).click()
+        self.element_is_visible(self.locators.COPY_INVOICE_URL_BUTTON).click()
+        keyboard.send('Ctrl+t')
+        keyboard.send('Ctrl+v')
+        keyboard.send('enter')
+        window_after = driver.window_handles[1]
+        driver.switch_to.window(window_after)
+        self.element_is_visible(self.locators.TRANSPORT_SET_BUTTON).click()
+        self.element_is_visible(self.locators.TRANSPORT_NEXT_BUTTON).click()
+        self.element_is_visible(self.locators.EMAIL_FIELD).send_keys('alexandre.gureev@yandex.ru')
+        self.element_is_visible(self.locators.EMAIL_NEXT_BUTTON).click()
+        time.sleep(2)
+        self.element_is_visible(self.locators.PAY_BUTTON).click()
+        self.element_is_visible(self.locators.CONFIRM_PAY_BUTTON).click()
+        state_before_pay = self.element_is_visible(self.locators.STATE_BEFORE_PAY).text
+        time.sleep(400)
+        driver.refresh()
+        state_after_pay = self.element_is_visible(self.locators.STATE_AFTER_PAY).text
+        return state_before_pay, state_after_pay
 
 
 

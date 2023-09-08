@@ -42,5 +42,21 @@ class TestMerchant:
             invoice_order_id, pay_form_order_id = test_crypto_acquiring.generate_invoice()
             assert invoice_order_id == pay_form_order_id, 'Generate invoice has not been correct work'
 
+        def test_payout_details(self, driver):
+            test_crypto_acquiring = MerchantCabCryptoAcquiring(driver, 'https://int.nimera.io/merchants/login/')
+            test_crypto_acquiring.open()
+            test_crypto_acquiring.auth_merchant_cab()
+            date_and_time_of_payout, date_and_time_of_payout_details = test_crypto_acquiring.payout_details()
+            assert date_and_time_of_payout == date_and_time_of_payout_details, 'Payout details has not been correct ' \
+                                                                               'work '
+
+        def test_invoice_payment(self, driver):
+            test_crypto_acquiring = MerchantCabCryptoAcquiring(driver, 'https://int.nimera.io/merchants/login/')
+            test_crypto_acquiring.open()
+            test_crypto_acquiring.auth_merchant_cab()
+            state_before_pay, state_after_pay = test_crypto_acquiring.invoice_payment()
+            assert state_before_pay == 'Awaiting confirmation' and state_after_pay == 'Confirmed', 'Invoice payment ' \
+                                                                                        'has not been correct work '
+
 
 
