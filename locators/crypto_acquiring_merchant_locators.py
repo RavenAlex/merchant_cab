@@ -56,4 +56,17 @@ class MerchantCabCryptoAcquiringLocators:
     STATE_AFTER_PAY = (By.XPATH, '//*[@id="__next"]/div/div[2]/div/div[3]/div/div[1]/div/div/div[2]')
 
 
+class MerchantCabBalanceLocators:
+    EMAIL_AUTH = (By.CSS_SELECTOR, 'input[type="email"]')
+    PASSWORD_AUTH = (By.CSS_SELECTOR, 'input[type="password"]')
+    LOGIN_BUTTON = (By.CSS_SELECTOR, 'button[class="MuiButtonBase-root MuiButton-root Button_root__2QlEq '
+                                     'MuiButton-contained Button_buttonContainer__VXHtH Button_primary__2U6tv"]')
+    BALANCE_BUTTON = (By.CSS_SELECTOR, 'a[href="/merchants/balance/"]')
+    BALANCE_STATUS = (By.XPATH, '//div[2]/div/div[1]/div[1]/div[1]/div[1]/div[2]')
+    WALLETS_STATUS = (By.XPATH, '//div[2]/div[1]/div[2]/div[2]')
+    BALANCE_HIDE_BUTTON = (By.XPATH, '//div[1]/span/span[1]')
+    WALLETS_HIDE_BUTTON = (By.XPATH, '//div[2]/span/span[1]')
+
+
+
 

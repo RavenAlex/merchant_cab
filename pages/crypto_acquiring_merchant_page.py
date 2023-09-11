@@ -10,7 +10,8 @@ from selenium.webdriver.chrome import webdriver
 from selenium.webdriver.remote import switch_to
 from webdriver_manager.core import driver
 
-from locators.crypto_acquiring_merchant_locators import AuthMerchantCabLocators, MerchantCabCryptoAcquiringLocators
+from locators.crypto_acquiring_merchant_locators import AuthMerchantCabLocators, MerchantCabCryptoAcquiringLocators, \
+    MerchantCabBalanceLocators
 from pages.base_page import BasePage
 
 
@@ -114,6 +115,26 @@ class MerchantCabCryptoAcquiring(BasePage):
         driver.refresh()
         state_after_pay = self.element_is_visible(self.locators.STATE_AFTER_PAY).text
         return state_before_pay, state_after_pay
+
+
+class MerchantCabBalance(BasePage):
+    locators = MerchantCabBalanceLocators()
+
+    def auth_merchant_cab(self):
+        self.element_is_visible(self.locators.EMAIL_AUTH).send_keys('agureev@clarus.tech')
+        self.element_is_visible(self.locators.PASSWORD_AUTH).send_keys('!WBf7BRBEP')
+        self.element_is_visible(self.locators.LOGIN_BUTTON).click()
+
+    def check_hide_balance_and_wallets(self):
+        self.element_is_visible(self.locators.BALANCE_BUTTON).click()
+        balance_status_before = self.element_is_visible(self.locators.BALANCE_STATUS).text
+        wallets_status_before = self.element_is_visible(self.locators.WALLETS_STATUS).text
+        self.element_is_visible(self.locators.BALANCE_HIDE_BUTTON).click()
+        self.element_is_visible(self.locators.WALLETS_HIDE_BUTTON).click()
+        balance_status_after = self.element_is_visible(self.locators.BALANCE_STATUS).text
+        wallets_status_after = self.element_is_visible(self.locators.WALLETS_STATUS).text
+        return balance_status_before, wallets_status_before, balance_status_after, wallets_status_after
+
 
 
 

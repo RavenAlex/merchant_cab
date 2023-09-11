@@ -1,6 +1,7 @@
 import time
 
-from pages.crypto_acquiring_merchant_page import MerchantCabAuth, MerchantCabCryptoAcquiring
+from pages.crypto_acquiring_merchant_page import MerchantCabAuth, MerchantCabCryptoAcquiring, \
+    MerchantCabBalance
 
 
 class TestMerchant:
@@ -56,7 +57,15 @@ class TestMerchant:
             test_crypto_acquiring.auth_merchant_cab()
             state_before_pay, state_after_pay = test_crypto_acquiring.invoice_payment()
             assert state_before_pay == 'Awaiting confirmation' and state_after_pay == 'Confirmed', 'Invoice payment ' \
-                                                                                        'has not been correct work '
+                                                                                                   'has not been correct work '
 
+    class TestBalance:
 
-
+        def test_hide_balance_and_wallets(self, driver):
+            test_balance = MerchantCabBalance(driver, 'https://int.nimera.io/merchants/login/')
+            test_balance.open()
+            test_balance.auth_merchant_cab()
+            balance_status_before, wallets_status_before, balance_status_after, \
+            wallets_status_after = test_balance.check_hide_balance_and_wallets()
+            assert balance_status_before != balance_status_after and wallets_status_before != wallets_status_after, \
+                'Hide balance or wallet has not been correct work'
