@@ -69,3 +69,14 @@ class TestMerchant:
             wallets_status_after = test_balance.check_hide_balance_and_wallets()
             assert balance_status_before != balance_status_after and wallets_status_before != wallets_status_after, \
                 'Hide balance or wallet has not been correct work'
+
+        def test_withdraw_from_balance(self, driver):
+            test_balance = MerchantCabBalance(driver, 'https://int.nimera.io/merchants/login/')
+            test_balance.open()
+            test_balance.auth_merchant_cab()
+            payout_date_before, withdraw_state, payout_date_after = test_balance.check_withdraw_from_balance()
+            assert payout_date_before != payout_date_after and withdraw_state == 'The request has been successfully ' \
+                                                                                 'created', 'Withdraw from balance ' \
+                                                                                             'hos not been correct ' \
+                                                                                             'work '
+

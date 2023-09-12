@@ -66,6 +66,13 @@ class MerchantCabBalanceLocators:
     WALLETS_STATUS = (By.XPATH, '//div[2]/div[1]/div[2]/div[2]')
     BALANCE_HIDE_BUTTON = (By.XPATH, '//div[1]/span/span[1]')
     WALLETS_HIDE_BUTTON = (By.XPATH, '//div[2]/span/span[1]')
+    PAYOUT_DATE = (By.XPATH, '//tr[1]/td[1]/div')
+    WITHDRAW_BUTTON = (By.XPATH, '//div/div[1]/div[2]/div[1]/div[2]/button[1]/span[1]')
+    CURRENCY_BUTTON = (By.XPATH, '/html/body/div[4]/div/div/div[2]/div[1]/div/div[1]/div[2]/div/div')
+    CURRENCY_SET = (By.XPATH, '/html/body/div[4]/div/div/div[2]/div[1]/div/div[1]/div[2]/div/div[2]/div/div[4]')
+    CURRENCY_AMOUNT = (By.CSS_SELECTOR, 'input[class="Input_input__1qukR WithdrawModal_amountInput__15ck4"]')
+    WITHDRAW_SUBMIT_BUTTON = (By.XPATH, '/html/body/div[4]/div/div/div[2]/div[3]/button[1]')
+    WITHDRAW_STATE = (By.XPATH, '/html/body/div[5]/div/div/div[2]/div')
 
 
 

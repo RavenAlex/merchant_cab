@@ -135,6 +135,23 @@ class MerchantCabBalance(BasePage):
         wallets_status_after = self.element_is_visible(self.locators.WALLETS_STATUS).text
         return balance_status_before, wallets_status_before, balance_status_after, wallets_status_after
 
+    def check_withdraw_from_balance(self):
+        driver = self.driver
+        self.element_is_visible(self.locators.BALANCE_BUTTON).click()
+        payout_date_before = self.element_is_present(self.locators.PAYOUT_DATE).text
+        self.element_is_visible(self.locators.WITHDRAW_BUTTON).click()
+        self.element_is_visible(self.locators.CURRENCY_BUTTON).click()
+        self.element_is_visible(self.locators.CURRENCY_SET).click()
+        self.element_is_visible(self.locators.CURRENCY_AMOUNT).send_keys('0.00001')
+        self.element_is_visible(self.locators.WITHDRAW_SUBMIT_BUTTON).click()
+        withdraw_state = self.element_is_visible(self.locators.WITHDRAW_STATE).text
+        time.sleep(1)
+        driver.refresh()
+        time.sleep(2)
+        payout_date_after = self.element_is_present(self.locators.PAYOUT_DATE).text
+        return payout_date_before, withdraw_state, payout_date_after
+
+
 
 
 
