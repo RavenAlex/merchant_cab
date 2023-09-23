@@ -3,6 +3,7 @@ import time
 
 import keyboard
 import pyperclip
+import allure
 
 from selenium.webdriver import Keys
 from selenium.common import TimeoutException
@@ -18,6 +19,7 @@ from pages.base_page import BasePage
 class MerchantCabAuth(BasePage):
     locators = AuthMerchantCabLocators()
 
+    @allure.step('Merchant cab auth and logout')
     def auth_and_log_out_merchant_cab(self):
         self.element_is_visible(self.locators.EMAIL_AUTH).send_keys('agureev@clarus.tech')
         self.element_is_visible(self.locators.PASSWORD_AUTH).send_keys('!WBf7BRBEP')
@@ -36,6 +38,7 @@ class MerchantCabCryptoAcquiring(BasePage):
         self.element_is_visible(self.locators.PASSWORD_AUTH).send_keys('!WBf7BRBEP')
         self.element_is_visible(self.locators.LOGIN_BUTTON).click()
 
+    @allure.step('Add and delete used currency')
     def add_and_delete_used_currency(self):
         self.element_is_visible(self.locators.SETTINGS_BUTTON).click()
         self.element_is_visible(self.locators.ADD_CURRENCY_BUTTON).click()
@@ -45,12 +48,14 @@ class MerchantCabCryptoAcquiring(BasePage):
         self.element_is_visible(self.locators.CURRENCY_DELETE_BUTTON).click()
         return currency, currency_result
 
+    @allure.step('Check customers id')
     def customers_id_check(self):
         customers_id = self.element_is_visible(self.locators.CUSTOMERS_ID_BUTTON).text
         self.element_is_visible(self.locators.CUSTOMERS_ID_BUTTON).click()
         customers_id_result = self.element_is_visible(self.locators.CUSTOMERS_ID).text
         return customers_id, customers_id_result
 
+    @allure.step('Check invoice order')
     def invoices_order_id(self):
         self.element_is_visible(self.locators.INVOICES_BUTTON).click()
         order_id = self.element_is_visible(self.locators.ORDER_ID).text
@@ -59,6 +64,7 @@ class MerchantCabCryptoAcquiring(BasePage):
         time.sleep(1)
         return order_id, order_id_result
 
+    @allure.step('Generate invoice')
     def generate_invoice(self):
         driver = self.driver
         window_before = driver.window_handles[0]
@@ -79,6 +85,7 @@ class MerchantCabCryptoAcquiring(BasePage):
         pay_form_order_id = self.element_is_present(self.locators.PAY_FORM_ORDER_ID).text.split('№')[1].split('\n')[0]
         return invoice_order_id, pay_form_order_id
 
+    @allure.step('Payout details')
     def payout_details(self):
         self.element_is_visible(self.locators.PAYOUTS_BUTTON).click()
         date_and_time_of_payout = self.element_is_visible(self.locators.DATE_AND_TIME_OF_PAYOUT).text
@@ -86,6 +93,7 @@ class MerchantCabCryptoAcquiring(BasePage):
         date_and_time_of_payout_details = self.element_is_visible(self.locators.DATE_AND_TIME_OF_PAYOUT_DETAILS).text
         return date_and_time_of_payout, date_and_time_of_payout_details
 
+    @allure.step('Invoice payment')
     def invoice_payment(self):
         driver = self.driver
         window_before = driver.window_handles[0]
@@ -125,6 +133,7 @@ class MerchantCabBalance(BasePage):
         self.element_is_visible(self.locators.PASSWORD_AUTH).send_keys('!WBf7BRBEP')
         self.element_is_visible(self.locators.LOGIN_BUTTON).click()
 
+    @allure.step('Hiding balance and wallets')
     def check_hide_balance_and_wallets(self):
         self.element_is_visible(self.locators.BALANCE_BUTTON).click()
         balance_status_before = self.element_is_visible(self.locators.BALANCE_STATUS).text
@@ -135,6 +144,7 @@ class MerchantCabBalance(BasePage):
         wallets_status_after = self.element_is_visible(self.locators.WALLETS_STATUS).text
         return balance_status_before, wallets_status_before, balance_status_after, wallets_status_after
 
+    @allure.step('Withdraw from balance')
     def check_withdraw_from_balance(self):
         driver = self.driver
         self.element_is_visible(self.locators.BALANCE_BUTTON).click()
