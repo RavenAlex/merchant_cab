@@ -156,10 +156,11 @@ class MerchantCabBalance(BasePage):
         self.element_is_visible(self.locators.WITHDRAW_SUBMIT_BUTTON).click()
         withdraw_state = self.element_is_visible(self.locators.WITHDRAW_STATE).text
         time.sleep(1)
+        time.sleep(240)
         driver.refresh()
-        time.sleep(2)
+        payout_status = self.element_is_present(self.locators.WITHDRAW_STATUS).text
         payout_date_after = self.element_is_present(self.locators.PAYOUT_DATE).text
-        return payout_date_before, withdraw_state, payout_date_after
+        return payout_date_before, withdraw_state, payout_date_after, payout_status
 
 
 

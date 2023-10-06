@@ -32,7 +32,7 @@ class MerchantCabCryptoAcquiringLocators:
     ORDER_ID = (By.XPATH, '//*[@id="__next"]/div/div/main/div/div[2]/table/tbody/tr[1]/td[4]/div')
     INVOICE_DETAILS_BUTTON = (By.XPATH, '//*[@id="__next"]/div/div/main/div/div[2]/table/tbody/tr[1]/td['
                                         '7]/button/span[1]')
-    ORDER_ID_RESULT = (By.XPATH, '/html/body/div[4]/div/div/div[2]/div[2]')
+    ORDER_ID_RESULT = (By.XPATH, '/html/body/div[4]/div/div/div[2]/div[4]')
     GENERATE_INVOICE_BUTTON = (By.XPATH, '//*[@id="__next"]/div/div/main/div/div[2]/button/span[1]/div[2]')
     INVOICE_ORDER_ID = (By.XPATH, '/html/body/div[4]/div/div/div[2]/div[1]/input')
     PAY_FORM_ORDER_ID = (By.XPATH, '//*[@id="__next"]/div/div[2]/div/div[1]/div[1]')
@@ -73,6 +73,7 @@ class MerchantCabBalanceLocators:
     CURRENCY_AMOUNT = (By.CSS_SELECTOR, 'input[class="Input_input__1qukR WithdrawModal_amountInput__15ck4"]')
     WITHDRAW_SUBMIT_BUTTON = (By.XPATH, '/html/body/div[4]/div/div/div[2]/div[3]/button[1]')
     WITHDRAW_STATE = (By.XPATH, '/html/body/div[5]/div/div/div[2]/div')
+    WITHDRAW_STATUS = (By.XPATH, '//*[@id="__next"]/div/div/main/div/div[2]/div/div[3]/table/tbody/tr[1]/td[7]/div')
 
 
 
