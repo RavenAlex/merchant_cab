@@ -1,7 +1,7 @@
 import time
 import allure
 
-from pages.crypto_acquiring_merchant_page import MerchantCabAuth, MerchantCabCryptoAcquiring, \
+from pages.crypto_acquiring_merchant_page_tst import MerchantCabAuth, MerchantCabCryptoAcquiring, \
     MerchantCabBalance
 
 
@@ -12,7 +12,7 @@ class TestMerchant:
 
         @allure.title('Check auth and log out merchant')
         def test_auth_and_log_out_merchant(self, driver):
-            test_authorization_form = MerchantCabAuth(driver, 'https://int.nimera.io/merchants/login/')
+            test_authorization_form = MerchantCabAuth(driver, 'https://tst.nimera.io/merchants/login/')
             test_authorization_form.open()
             login_result = test_authorization_form.auth_and_log_out_merchant_cab()
             assert login_result == 'agureev@clarus.tech', 'Login in merchant cab has not been correct work'
@@ -22,7 +22,7 @@ class TestMerchant:
 
         @allure.title('Check add and delete used currency')
         def test_add_and_delete_used_currency(self, driver):
-            test_crypto_acquiring = MerchantCabCryptoAcquiring(driver, 'https://int.nimera.io/merchants/login/')
+            test_crypto_acquiring = MerchantCabCryptoAcquiring(driver, 'https://tst.nimera.io/merchants/login/')
             test_crypto_acquiring.open()
             test_crypto_acquiring.auth_merchant_cab()
             currency, currency_result = test_crypto_acquiring.add_and_delete_used_currency()
@@ -30,7 +30,7 @@ class TestMerchant:
 
         @allure.title('Check customers id')
         def test_customers_id(self, driver):
-            test_crypto_acquiring = MerchantCabCryptoAcquiring(driver, 'https://int.nimera.io/merchants/login/')
+            test_crypto_acquiring = MerchantCabCryptoAcquiring(driver, 'https://tst.nimera.io/merchants/login/')
             test_crypto_acquiring.open()
             test_crypto_acquiring.auth_merchant_cab()
             customers_id, customers_id_result = test_crypto_acquiring.customers_id_check()
@@ -38,7 +38,7 @@ class TestMerchant:
 
         @allure.title('Check invoices order id')
         def test_invoices_order_id(self, driver):
-            test_crypto_acquiring = MerchantCabCryptoAcquiring(driver, 'https://int.nimera.io/merchants/login/')
+            test_crypto_acquiring = MerchantCabCryptoAcquiring(driver, 'https://tst.nimera.io/merchants/login/')
             test_crypto_acquiring.open()
             test_crypto_acquiring.auth_merchant_cab()
             order_id, order_id_result = test_crypto_acquiring.invoices_order_id()
@@ -46,7 +46,7 @@ class TestMerchant:
 
         @allure.title('Check generate invoice')
         def test_generate_invoice(self, driver):
-            test_crypto_acquiring = MerchantCabCryptoAcquiring(driver, 'https://int.nimera.io/merchants/login/')
+            test_crypto_acquiring = MerchantCabCryptoAcquiring(driver, 'https://tst.nimera.io/merchants/login/')
             test_crypto_acquiring.open()
             test_crypto_acquiring.auth_merchant_cab()
             invoice_order_id, pay_form_order_id = test_crypto_acquiring.generate_invoice()
@@ -54,7 +54,7 @@ class TestMerchant:
 
         @allure.title('Check payout details')
         def test_payout_details(self, driver):
-            test_crypto_acquiring = MerchantCabCryptoAcquiring(driver, 'https://int.nimera.io/merchants/login/')
+            test_crypto_acquiring = MerchantCabCryptoAcquiring(driver, 'https://tst.nimera.io/merchants/login/')
             test_crypto_acquiring.open()
             test_crypto_acquiring.auth_merchant_cab()
             date_and_time_of_payout, date_and_time_of_payout_details = test_crypto_acquiring.payout_details()
@@ -63,7 +63,7 @@ class TestMerchant:
 
         @allure.title('Check invoice payment')
         def test_invoice_payment(self, driver):
-            test_crypto_acquiring = MerchantCabCryptoAcquiring(driver, 'https://int.nimera.io/merchants/login/')
+            test_crypto_acquiring = MerchantCabCryptoAcquiring(driver, 'https://tst.nimera.io/merchants/login/')
             test_crypto_acquiring.open()
             test_crypto_acquiring.auth_merchant_cab()
             state_before_pay, state_after_pay = test_crypto_acquiring.invoice_payment()
@@ -75,7 +75,7 @@ class TestMerchant:
 
         @allure.title('Check hide balance and wallets')
         def test_hide_balance_and_wallets(self, driver):
-            test_balance = MerchantCabBalance(driver, 'https://int.nimera.io/merchants/login/')
+            test_balance = MerchantCabBalance(driver, 'https://tst.nimera.io/merchants/login/')
             test_balance.open()
             test_balance.auth_merchant_cab()
             balance_status_before, wallets_status_before, balance_status_after, \
@@ -85,7 +85,7 @@ class TestMerchant:
 
         @allure.title('Check withdraw from balance')
         def test_withdraw_from_balance(self, driver):
-            test_balance = MerchantCabBalance(driver, 'https://int.nimera.io/merchants/login/')
+            test_balance = MerchantCabBalance(driver, 'https://tst.nimera.io/merchants/login/')
             test_balance.open()
             test_balance.auth_merchant_cab()
             payout_date_before, withdraw_state, payout_date_after, payout_status = test_balance.check_withdraw_from_balance()
@@ -97,7 +97,7 @@ class TestMerchant:
 
         @allure.title('Check convert balance')
         def test_convert_balance(self, driver):
-            test_balance = MerchantCabBalance(driver, 'https://int.nimera.io/merchants/login/')
+            test_balance = MerchantCabBalance(driver, 'https://tst.nimera.io/merchants/login/')
             test_balance.open()
             test_balance.auth_merchant_cab()
             convert_result, exchange_result = test_balance.check_convert_balance()

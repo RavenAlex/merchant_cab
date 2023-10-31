@@ -11,7 +11,7 @@ from selenium.webdriver.chrome import webdriver
 from selenium.webdriver.remote import switch_to
 from webdriver_manager.core import driver
 
-from locators.crypto_acquiring_merchant_locators import AuthMerchantCabLocators, MerchantCabCryptoAcquiringLocators, \
+from locators.crypto_acquiring_merchant_locators_tst import AuthMerchantCabLocators, MerchantCabCryptoAcquiringLocators, \
     MerchantCabBalanceLocators
 from pages.base_page import BasePage
 
@@ -22,7 +22,7 @@ class MerchantCabAuth(BasePage):
     @allure.step('Merchant cab auth and logout')
     def auth_and_log_out_merchant_cab(self):
         self.element_is_visible(self.locators.EMAIL_AUTH).send_keys('agureev@clarus.tech')
-        self.element_is_visible(self.locators.PASSWORD_AUTH).send_keys('!WBf7BRBEP')
+        self.element_is_visible(self.locators.PASSWORD_AUTH).send_keys('kdx5be!TX6')
         self.element_is_visible(self.locators.LOGIN_BUTTON).click()
         login_result = self.element_is_visible(self.locators.LOGIN_RESULT).get_attribute('value')
         self.element_is_visible(self.locators.LOG_OUT_FIELD).click()
@@ -35,7 +35,7 @@ class MerchantCabCryptoAcquiring(BasePage):
 
     def auth_merchant_cab(self):
         self.element_is_visible(self.locators.EMAIL_AUTH).send_keys('agureev@clarus.tech')
-        self.element_is_visible(self.locators.PASSWORD_AUTH).send_keys('!WBf7BRBEP')
+        self.element_is_visible(self.locators.PASSWORD_AUTH).send_keys('kdx5be!TX6')
         self.element_is_visible(self.locators.LOGIN_BUTTON).click()
 
     @allure.step('Add and delete used currency')
@@ -45,7 +45,7 @@ class MerchantCabCryptoAcquiring(BasePage):
         currency = self.element_is_visible(self.locators.CURRENCY_TEXT).text.split('\n')[0]
         self.element_is_visible(self.locators.ADD_CURRENCY_BUTTON_CONFIRM).click()
         currency_result = self.element_is_visible(self.locators.CURRENCY_TEXT_AFTER_ADD).text
-        self.element_is_visible(self.locators.CURRENCY_DELETE_BUTTON).click()
+        self.element_is_present(self.locators.CURRENCY_DELETE_BUTTON).click()
         return currency, currency_result
 
     @allure.step('Check customers id')
@@ -130,7 +130,7 @@ class MerchantCabBalance(BasePage):
 
     def auth_merchant_cab(self):
         self.element_is_visible(self.locators.EMAIL_AUTH).send_keys('agureev@clarus.tech')
-        self.element_is_visible(self.locators.PASSWORD_AUTH).send_keys('!WBf7BRBEP')
+        self.element_is_visible(self.locators.PASSWORD_AUTH).send_keys('kdx5be!TX6')
         self.element_is_visible(self.locators.LOGIN_BUTTON).click()
 
     @allure.step('Hiding balance and wallets')
