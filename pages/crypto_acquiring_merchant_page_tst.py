@@ -152,11 +152,11 @@ class MerchantCabBalance(BasePage):
         self.element_is_visible(self.locators.WITHDRAW_BUTTON).click()
         self.element_is_visible(self.locators.CURRENCY_BUTTON).click()
         self.element_is_visible(self.locators.CURRENCY_SET).click()
-        self.element_is_visible(self.locators.CURRENCY_AMOUNT).send_keys('0.00001')
+        self.element_is_visible(self.locators.CURRENCY_AMOUNT).send_keys('0.0001')
         self.element_is_visible(self.locators.WITHDRAW_SUBMIT_BUTTON).click()
         withdraw_state = self.element_is_visible(self.locators.WITHDRAW_STATE).text
         time.sleep(1)
-        time.sleep(240)
+        time.sleep(300)
         driver.refresh()
         payout_status = self.element_is_present(self.locators.WITHDRAW_STATUS).text
         payout_date_after = self.element_is_present(self.locators.PAYOUT_DATE).text

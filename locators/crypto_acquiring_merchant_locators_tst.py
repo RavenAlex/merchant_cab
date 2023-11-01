@@ -26,9 +26,8 @@ class MerchantCabCryptoAcquiringLocators:
     CUSTOMERS_ID = (By.XPATH, '//*[@id="__next"]/div/div/main/div/div[2]/table/tbody/tr/td[1]/a')
     CUSTOMERS_ID_RESULT = (By.XPATH, '/html/body/div[4]/div/div/h2/span')
     INVOICES_BUTTON = (By.CSS_SELECTOR, 'a[href="/merchants/crypto-acquiring/invoices/"]')
-    ORDER_ID = (By.XPATH, '//*[@id="__next"]/div/div/main/div/div[2]/table/tbody/tr[1]/td[4]/div')
-    INVOICE_DETAILS_BUTTON = (By.XPATH, '//*[@id="__next"]/div/div/main/div/div[2]/table/tbody/tr[1]/td['
-                                        '7]/button/span[1]')
+    ORDER_ID = (By.XPATH, '//*[@id="__next"]/div/div/main/div/div[2]/table/tbody/tr[1]/td[6]/div')
+    INVOICE_DETAILS_BUTTON = (By.XPATH, '//*[@id="__next"]/div/div/main/div/div[2]/table/tbody/tr[1]/td[10]/button')
     ORDER_ID_RESULT = (By.XPATH, '/html/body/div[4]/div/div/div[2]/div[4]')
     GENERATE_INVOICE_BUTTON = (By.XPATH, '//*[@id="__next"]/div/div/main/div/div[2]/button/span[1]/div[2]')
     INVOICE_ORDER_ID = (By.XPATH, '/html/body/div[4]/div/div/div[2]/div[1]/input')
