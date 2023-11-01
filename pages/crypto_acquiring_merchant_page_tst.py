@@ -21,8 +21,8 @@ class MerchantCabAuth(BasePage):
 
     @allure.step('Merchant cab auth and logout')
     def auth_and_log_out_merchant_cab(self):
-        self.element_is_visible(self.locators.EMAIL_AUTH).send_keys('agureev@clarus.tech')
-        self.element_is_visible(self.locators.PASSWORD_AUTH).send_keys('kdx5be!TX6')
+        self.element_is_visible(self.locators.EMAIL_AUTH).send_keys('gureeffalexandros@yandex.ru')
+        self.element_is_visible(self.locators.PASSWORD_AUTH).send_keys('L%p6*1sSU!')
         self.element_is_visible(self.locators.LOGIN_BUTTON).click()
         login_result = self.element_is_visible(self.locators.LOGIN_RESULT).get_attribute('value')
         self.element_is_visible(self.locators.LOG_OUT_FIELD).click()
@@ -34,8 +34,8 @@ class MerchantCabCryptoAcquiring(BasePage):
     locators = MerchantCabCryptoAcquiringLocators()
 
     def auth_merchant_cab(self):
-        self.element_is_visible(self.locators.EMAIL_AUTH).send_keys('agureev@clarus.tech')
-        self.element_is_visible(self.locators.PASSWORD_AUTH).send_keys('kdx5be!TX6')
+        self.element_is_visible(self.locators.EMAIL_AUTH).send_keys('gureeffalexandros@yandex.ru')
+        self.element_is_visible(self.locators.PASSWORD_AUTH).send_keys('L%p6*1sSU!')
         self.element_is_visible(self.locators.LOGIN_BUTTON).click()
 
     @allure.step('Add and delete used currency')
@@ -129,8 +129,8 @@ class MerchantCabBalance(BasePage):
     locators = MerchantCabBalanceLocators()
 
     def auth_merchant_cab(self):
-        self.element_is_visible(self.locators.EMAIL_AUTH).send_keys('agureev@clarus.tech')
-        self.element_is_visible(self.locators.PASSWORD_AUTH).send_keys('kdx5be!TX6')
+        self.element_is_visible(self.locators.EMAIL_AUTH).send_keys('gureeffalexandros@yandex.ru')
+        self.element_is_visible(self.locators.PASSWORD_AUTH).send_keys('L%p6*1sSU!')
         self.element_is_visible(self.locators.LOGIN_BUTTON).click()
 
     @allure.step('Hiding balance and wallets')
