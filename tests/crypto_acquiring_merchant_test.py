@@ -67,7 +67,7 @@ class TestMerchant:
             test_crypto_acquiring.open()
             test_crypto_acquiring.auth_merchant_cab()
             state_before_pay, state_after_pay = test_crypto_acquiring.invoice_payment()
-            assert state_before_pay == 'Awaiting confirmation' and state_after_pay == 'Confirmed', 'Invoice payment ' \
+            assert state_before_pay == 'Processing' and state_after_pay == 'Paid', 'Invoice payment ' \
                                                                                                    'has not been correct work '
 
     @allure.feature('Balance')

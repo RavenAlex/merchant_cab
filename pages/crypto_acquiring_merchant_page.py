@@ -82,7 +82,7 @@ class MerchantCabCryptoAcquiring(BasePage):
         keyboard.send('enter')
         window_after = driver.window_handles[1]
         driver.switch_to.window(window_after)
-        pay_form_order_id = self.element_is_present(self.locators.PAY_FORM_ORDER_ID).text.split('№')[1].split('\n')[0]
+        pay_form_order_id = self.element_is_present(self.locators.PAY_FORM_ORDER_ID).text.split('№')[1].split(' ')[1]
         return invoice_order_id, pay_form_order_id
 
     @allure.step('Payout details')
@@ -112,14 +112,12 @@ class MerchantCabCryptoAcquiring(BasePage):
         window_after = driver.window_handles[1]
         driver.switch_to.window(window_after)
         self.element_is_visible(self.locators.TRANSPORT_SET_BUTTON).click()
-        self.element_is_visible(self.locators.TRANSPORT_NEXT_BUTTON).click()
         self.element_is_visible(self.locators.EMAIL_FIELD).send_keys('alexandre.gureev@yandex.ru')
-        self.element_is_visible(self.locators.EMAIL_NEXT_BUTTON).click()
+        self.element_is_visible(self.locators.TRANSPORT_NEXT_BUTTON).click()
         time.sleep(2)
         self.element_is_visible(self.locators.PAY_BUTTON).click()
-        self.element_is_visible(self.locators.CONFIRM_PAY_BUTTON).click()
         state_before_pay = self.element_is_visible(self.locators.STATE_BEFORE_PAY).text
-        time.sleep(400)
+        time.sleep(320)
         driver.refresh()
         state_after_pay = self.element_is_visible(self.locators.STATE_AFTER_PAY).text
         return state_before_pay, state_after_pay
